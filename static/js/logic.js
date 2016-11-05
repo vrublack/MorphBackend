@@ -27,6 +27,7 @@ var current_q = questions[keys[category_i]][question_i];
 var question_text;
 var category_text;
 var answer_element;
+var img_element;
 var label1;
 var label5;
 
@@ -35,10 +36,26 @@ var format_key = function(i)
     return keys[i].replace('_', ' ');
 };
 
+var update_morph = function(score)
+{
+    var url = '/morph/' + score + '.jpg';
+    $.ajax({
+        url : url,
+        processData : false
+    }).always(function(){
+        img_element.attr("src", url);
+    });
+};
+
 var next_question = function() {
 
     // TODO access value of answer_element correctly
     current_q.answer = answer_element.val;
+
+    // update score
+    var score = calculate_score();
+    // TODO use score
+    update_morph(score);
 
     question_i++;
     if (question_i == questions[keys[category_i]].length)
@@ -72,6 +89,7 @@ var init = function()
     question_text = $('#question-text');
     category_text = $('#category-text');
     answer_element = $('#answer-element');
+    img_element = $("#morph");
     label1 = $("#l1");
     label5 = $("#l5");
 
@@ -86,6 +104,9 @@ var init = function()
 // the more positive = the more pro-Clinton
 var calculate_score = function()
 {
+    // TODO remove
+    return -10;
+
     var trump_sum = 0;
     var clinton_sum = 0;
 
