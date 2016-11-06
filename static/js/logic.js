@@ -125,30 +125,26 @@ var transition_gif = function (from_score, to_score) {
 
     if (from_score == to_score)
         return;
-    else if (from_score < to_score)
+
+    if (from_score == -10 && to_score == 0)
+        gif_element.attr('src', 'images/b1.gif');
+    else if (from_score == 0 && to_score == 10)
+        gif_element.attr('src', 'images/b2.gif');
+    else if (from_score == 10 && to_score == 0)
         gif_element.attr('src', 'images/f1.gif');
     else
-        gif_element.attr('src', 'images/b1.gif');
+        gif_element.attr('src', 'images/f2.gif');
 
     gif_element.removeAttr('stopped');
-
-    var total_dist = to_score - from_score;
-    var until_half = Math.max(0, 0 - from_score);
-    var after_half = total_dist - until_half;
-
-    var total_time = 2000;
-
-    setTimeout(function() {
-        gif_element.attr('src', 'images/f2.gif');
-        setTimeout(function() {
-                    // gif_element.attr('stopped');
-            }, after_half / 10.0 * total_time);
-
-    }, until_half / 10.0 * total_time);
 };
 
 var transition_all = function () {
-    transition_gif(-10, 10);
+    gif_element.attr('src', 'images/b1.gif');
+    gif_element.attr('src', 'images/b2.gif');
+    gif_element.attr('src', 'images/f1.gif');
+    gif_element.attr('src', 'images/f2.gif');
+
+    setTimeout(function() { gif_element.attr('src', 'images/0.gif')}, 5000);
 };
 
 var next_question = function () {
@@ -226,5 +222,14 @@ var calculate_score = function () {
     var cap = 10;
     score = Math.min(score, cap);
     score = Math.max(score, -cap);
+
+    // score is either -10, 0 or 10
+    if (score <= -5)
+        score = -10;
+    else if (score <= 5)
+        score = 0;
+    else
+        score = 10;
+
     return score;
 };
