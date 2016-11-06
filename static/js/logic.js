@@ -122,38 +122,26 @@ var format_key = function (i) {
  };*/
 
 var transition_gif = function (from_score, to_score) {
+
     if (from_score == to_score)
         return;
+    else if (from_score < to_score)
+        gif_element.attr('src', 'images/forward.gif');
+    else
+        gif_element.attr('src', 'images/backwards.gif');
 
-    var fname;
-    if (from_score < to_score) {
-        fname = from_score.toString() + '.gif';
-    } else {
-        fname = from_score.toString() + 'r.gif';
-    }
+    gif_element.removeAttr('stopped');
 
-    console.log('Playing gif ' + fname);
-
-    gif_element.attr('src', 'images/cli/' + fname);
-
-    if (Math.abs(from_score - to_score) > 1) {
-        setTimeout(function () {
-
-            if (from_score < to_score) {
-                transition_gif(from_score + 1, to_score);
-            } else {
-                transition_gif(from_score - 1, to_score);
-            }
-
-        }, 100);
-    }
+    var total_time = 6000;
+    var frac_time = Math.abs(from_score - to_score) / 20.0;
+    /*
+    setTimeout(function() {
+        // gif_element.attr('stopped');
+    }, frac_time * total_time);*/
 };
 
 var transition_all = function () {
     transition_gif(-10, 10);
-    setTimedOut(function () {
-        transition_gif(10, -10);
-    }, 2000);
 };
 
 var next_question = function () {
