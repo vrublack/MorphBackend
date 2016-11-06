@@ -61,12 +61,12 @@ var transition_gif = function(from_score, to_score)
         fname = from_score.toString() + '.gif';
     } else
     {
-        fname = to_score.toString() + 'r.gif';
+        fname = from_score.toString() + 'r.gif';
     }
 
     console.log('Playing gif ' + fname);
 
-    gif_element.attr('src', 'images/' + fname);
+    gif_element.attr('src', 'images/cli/' + fname);
 
     if (Math.abs(from_score - to_score) > 1)
     {
@@ -77,22 +77,20 @@ var transition_gif = function(from_score, to_score)
                 transition_gif(from_score + 1, to_score);
             } else
             {
-                transition_gif(from_score, to_score - 1);
+                transition_gif(from_score - 1, to_score);
             }
 
-        }, 500);
+        }, 100);
     }
 };
 
 var next_question = function() {
 
-    // TODO access value of answer_element correctly
     current_q.answer = parseInt(answer_element.val());
 
     // update score
     var score = calculate_score();
     console.log('Score: ' + score);
-    // TODO use score
     transition_gif(last_score, score);
     last_score = score;
 
