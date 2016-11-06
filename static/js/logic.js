@@ -23,11 +23,13 @@ var keys = Object.keys(questions);
 var category_i = 0;
 var question_i = 0;
 var current_q = questions[keys[category_i]][question_i];
+var last_score = 0;
 
 var question_text;
 var category_text;
 var answer_element;
 var img_element;
+var gif_element;
 var label1;
 var label5;
 
@@ -36,6 +38,7 @@ var format_key = function(i)
     return keys[i].replace('_', ' ');
 };
 
+/*
 var update_morph = function(score)
 {
     var url = '/morph/' + score + '.jpg';
@@ -45,6 +48,40 @@ var update_morph = function(score)
     }).always(function(){
         img_element.attr("src", url);
     });
+};*/
+
+var transition_gif = function(from_score, to_score)
+{
+    if (from_score == to_score)
+        return;
+
+    var fname;
+    if (from_score < to_score)
+    {
+        fname = from_score.toString() + '.gif';
+    } else
+    {
+        fname = to_score.toString() + 'r.gif';
+    }
+
+    console.log('Playing gif ' + fname);
+
+    gif_element.attr('src', 'images/' + fname);
+
+    if (Math.abs(from_score - to_score) > 1)
+    {
+        setTimeout(function(){
+
+            if (from_score < to_score)
+            {
+                transition_gif(from_score + 1, to_score);
+            } else
+            {
+                transition_gif(from_score, to_score - 1);
+            }
+
+        }, 500);
+    }
 };
 
 var next_question = function() {
@@ -56,7 +93,8 @@ var next_question = function() {
     var score = calculate_score();
     console.log('Score: ' + score);
     // TODO use score
-    update_morph(score);
+    transition_gif(last_score, score);
+    last_score = score;
 
     question_i++;
     if (question_i == questions[keys[category_i]].length)
@@ -91,6 +129,7 @@ var init = function()
     category_text = $('#category-text');
     answer_element = $('#answer-element');
     img_element = $("#morph");
+    gif_element = $("#gif");
     label1 = $("#l1");
     label5 = $("#l5");
 

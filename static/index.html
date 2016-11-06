@@ -10,40 +10,64 @@
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
     <script src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/logic.js"></script>
-</head>
-<body onload="init()" style="background-image: url('images/america.jpg'); background-size: 100%;     background-repeat: no-repeat;">
 
-    <br>
-	
-	<div style="text-align:center;">
-		<div style="display: block;
+    <script>
+        if ('registerElement' in document
+                && 'createShadowRoot' in HTMLElement.prototype
+                && 'import' in document.createElement('link')
+                && 'content' in document.createElement('template')) {
+            // We're using a browser with native WC support!
+        } else {
+            document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/polymer/0.3.4/platform.js"><\/script>')
+        }
+    </script>
+    <link rel="import" href="xgif/x-gif.html">
+
+</head>
+<body onload="init()"
+      style="background-image: url('images/america.jpg'); background-size: 100%;     background-repeat: no-repeat;">
+
+<br>
+
+<div style="text-align:center;">
+    <div style="display: block;
 		border: 2px solid white;
 		border-radius: 10px;
 		padding: 10px;
 		background:rgba(0,0,0,0.8);
 		margin: 5px;">
-	
-			<p style="color: white;
+
+        <p style="color: white;
 			font-size: 35px;" id="category-text" class="text-center">Category</p>
-			
-			<hr width="22%" style="border-top: 3px solid white;">
-		
-			<p style="color: white;
-			font-size: 25px;" id="question-text" >Question</p>
-			<br>
 
-			<table style="width: 100%;"> <tbody>
-			<tr>
-				<td style="width:33%;"><div id="l1" style="float: right; text-shadow: 0px 0px 5px #000000; color:white;">Strongly disagree</div></td>
-				<td style="width: 20%;"><input style="width:60%; margin-left:20%; margin-right:20%;" id="answer-element" type="range" min="1" max="5" step="1" style="width:200px;"></td>
-				<td style="width:33%;"><div id="l5" style="float: left; text-shadow: 0px 0px 5px #000000; color:white;">Strongly agree</div></td>
-			</tr>
-			</tbody> </table>
+        <hr width="22%" style="border-top: 3px solid white;">
+
+        <p style="color: white;
+			font-size: 25px;" id="question-text">Question</p>
+        <br>
+
+        <table style="width: 100%;">
+            <tbody>
+            <tr>
+                <td style="width:33%;">
+                    <div id="l1" style="float: right; text-shadow: 0px 0px 5px #000000; color:white;">Strongly
+                        disagree
+                    </div>
+                </td>
+                <td style="width: 20%;"><input style="width:60%; margin-left:20%; margin-right:20%;" id="answer-element"
+                                               type="range" min="1" max="5" step="1" style="width:200px;"></td>
+                <td style="width:33%;">
+                    <div id="l5" style="float: left; text-shadow: 0px 0px 5px #000000; color:white;">Strongly agree
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
 
 
-			<br>
-			<br>
-			<input style="-webkit-border-radius: 4;
+        <br>
+        <br>
+        <input style="-webkit-border-radius: 4;
 			-moz-border-radius: 4;
 			border-radius: 4px;
 			font-family: Arial;
@@ -56,10 +80,10 @@
 			border-color: white;
 			border-width: 0px;" type="button" onclick="next_question()" id="next-button" value="Next">
 
-		</div>
-	</div>
+    </div>
+</div>
 
-<img id="morph" src="images/2013-05-22%2016.27.48.jpg" style="width: 200px; height: 200px;"/>
+<x-gif id="gif" src="images/smash.gif" speed=0.5 style="width: 200px; height: 200px;"></x-gif>
 
 </body>
 </html>
