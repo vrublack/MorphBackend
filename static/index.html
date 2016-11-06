@@ -14,31 +14,52 @@
 <body onload="init()" style="background-image: url('images/america.jpg'); background-size: 100%;     background-repeat: no-repeat;">
 
     <br>
-	<p style="color: black;
-    font-size: 35px;
-    text-shadow: 2px 2px 12px #000000;" id="category-text" class="text-center">Category</p>
-    <p style="color: white;
-    font-size: 35px;
-    text-shadow: 2px 2px 12px #000000;" id="question-text" class="text-center">Question</p>
-    <br>
+	
+	<div style="text-align:center;">
+		<div style="display: block;
+		border: 2px solid white;
+		border-radius: 10px;
+		padding: 10px;
+		background:rgba(0,0,0,0.8);
+		margin: 5px;">
+	
+			<p style="color: white;
+			font-size: 35px;" id="category-text" class="text-center">Category</p>
+			
+			<hr width="22%" style="border-top: 3px solid white;">
+		
+			<p style="color: white;
+			font-size: 25px;" id="question-text" >Question</p>
+			<br>
 
-    <div style="text-align:center;">
-
-        <table style="width: 100%;"> <tbody>
-        <tr>
-            <td style="width:33%;"><div id="l1" style="float: right; text-shadow: 0px 0px 5px #000000; color:white;">Strongly disagree</div></td>
-            <td style="width: 20%;"><input style="width:60%; margin-left:20%; margin-right:20%;" id="answer-element" type="range" min="1" max="5" step="1" style="width:200px;"></td>
-            <td style="width:33%;"><div id="l5" style="float: left; text-shadow: 0px 0px 5px #000000; color:white;">Strongly agree</div></td>
-        </tr>
-        </tbody> </table>
+			<table style="width: 100%;"> <tbody>
+			<tr>
+				<td style="width:33%;"><div id="l1" style="float: right; text-shadow: 0px 0px 5px #000000; color:white;">Strongly disagree</div></td>
+				<td style="width: 20%;"><input style="width:60%; margin-left:20%; margin-right:20%;" id="answer-element" type="range" min="1" max="5" step="1" style="width:200px;"></td>
+				<td style="width:33%;"><div id="l5" style="float: left; text-shadow: 0px 0px 5px #000000; color:white;">Strongly agree</div></td>
+			</tr>
+			</tbody> </table>
 
 
-        <br>
-    <br>
-    <input type="button" onclick="next_question()" id="next-button" value="Next">
-</div>
+			<br>
+			<br>
+			<input style="-webkit-border-radius: 4;
+			-moz-border-radius: 4;
+			border-radius: 4px;
+			font-family: Arial;
+			color: #ffffff;
+			font-size: 23px;
+			background: #f00000;
+			padding: 10px 20px 10px 20px;
+			text-decoration: none;
+			border-style: solid;
+			border-color: white;
+			border-width: 0px;" type="button" onclick="next_question()" id="next-button" value="Next">
 
-<img id="morph" style="width: 200px; height: 200px" src="images/2013-05-22 16.27.48.jpg"/>
+		</div>
+	</div>
+
+<img id="morph" src="images/2013-05-22%2016.27.48.jpg" style="width: 200px; height: 200px;"/>
 
 </body>
 </html>

@@ -50,10 +50,11 @@ var update_morph = function(score)
 var next_question = function() {
 
     // TODO access value of answer_element correctly
-    current_q.answer = answer_element.val;
+    current_q.answer = parseInt(answer_element.val());
 
     // update score
     var score = calculate_score();
+    console.log('Score: ' + score);
     // TODO use score
     update_morph(score);
 
@@ -104,16 +105,14 @@ var init = function()
 // the more positive = the more pro-Clinton
 var calculate_score = function()
 {
-    // TODO remove
-    return -10;
-
     var trump_sum = 0;
     var clinton_sum = 0;
 
-    for (var key in questions)
+    for (var i = 0; i < keys.length; i++)
     {
-        for (var q in questions[key])
+        for (var j = 0; j < questions[keys[i]].length; j++)
         {
+            var q = questions[keys[i]][j];
             if (q.hasOwnProperty('answer'))
             {
                 trump_sum += q.t1 + (q.t5 - q.t1) * q.answer / 5.0;
