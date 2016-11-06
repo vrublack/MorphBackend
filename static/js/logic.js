@@ -121,5 +121,11 @@ var calculate_score = function()
         }
     }
 
-    return clinton_sum - trump_sum;
+    var score = clinton_sum - trump_sum;
+    score = Math.round(score / 2);
+    // we want the value to be in [-cap, cap]
+    var cap = 10;
+    score = Math.min(score, cap);
+    score = Math.max(score, -cap);
+    return score;
 };
