@@ -16,7 +16,7 @@ Healthcare: [{q:'The government should regulate prices for...', l1:'no drugs', l
     Environment: [{q:'The government should provide tax credits and subsidies for companies seeking alternate energy sources.', t1:10, c1:0, t5:0, c5:10},
     {q:'The government should increase environmental regulations that mitigate the effects of climate change.', t1: 0, c1:0, t5:10, c5:10}],
     Education: [{q:'The government should decrease interest rates on student loans.', t1:0, c1:10, t5:10, c5:0},
-    {q:'Education standards should be universal across the country.', t1:0, c1:10, t5:10, c1:0}]
+    {q:'Education standards should be universal across the country.', t1:0, c1:10, t5:10, c5:0}]
 };
 var keys = Object.keys(questions);
 
